@@ -1,18 +1,13 @@
 package com.weborders.utilities;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 public class Driver {
     private static WebDriver driver;
-
-    private Driver() {
-
+    private Driver(){
     }
-
-    public static WebDriver getDriver() {
+    public static WebDriver getDriver(){
         String browser = ConfigurationReader.getProperty("browser");
         if (driver == null) {
             switch (browser) {
@@ -33,12 +28,10 @@ public class Driver {
         }
         return driver;
     }
-
     public static void closeDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;
         }
     }
-
 }
