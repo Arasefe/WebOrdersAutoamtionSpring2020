@@ -11,6 +11,9 @@ public class LoginTests extends TestBase {
     public void loginTest() {
         LoginPage loginPage = new LoginPage();
         loginPage.login();
-        Assert.assertEquals(Driver.getDriver().getTitle(), "Web Orders", "Page title is wrong!");
+        //assertion
+        String actual = Driver.getDriver().getTitle();
+        String expected = "Web Orders";
+        Assert.assertEquals(actual, expected, "Page title is wrong!");
     }
 }
