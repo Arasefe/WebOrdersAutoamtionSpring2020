@@ -113,12 +113,16 @@ public class OrderPage extends BasePage {
         cardNumber.sendKeys(cardNumberValue);
     }
 
-    public void expirationDate(String date) {
+    public void enterExpirationDate(String date) {
         expirationDate.sendKeys(date);
     }
 
     public void clickOnProcessButton() {
         processButton.click();
+    }
+
+    public String getTotal(){
+        return total.getAttribute("value");
     }
 
 }
