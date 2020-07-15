@@ -31,7 +31,19 @@ public abstract class BasePage {
     }
 
     public void clickOnViewAllOrders(){
+        System.out.println("Clicking on 'View All Orders'page");
         wait.until(ExpectedConditions.elementToBeClickable(viewAllOrders));
         viewAllOrders.click();
     }
+
+    public void clickOnViewAllProducts(){
+        System.out.println("Clicking on 'View All Products'page");
+        wait.until(ExpectedConditions.elementToBeClickable(viewAllProducts));
+        viewAllProducts.click();
+    }
+
+    public void clickOnOrder(){
+        wait.until(ExpectedConditions.elementToBeClickable(order)).click();
+    }
+
 }
