@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class OrderPage extends BasePage {
@@ -65,6 +66,7 @@ public class OrderPage extends BasePage {
     }
 
     public void enterPricePerUnit(String pricePerUnitValue) {
+        //delete old value and enter new in one action
         pricePerUnit.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), pricePerUnitValue);
     }
 
@@ -72,8 +74,51 @@ public class OrderPage extends BasePage {
         discount.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), discountValue);
     }
 
-    public void clickToCalculate(){
+    public void clickToCalculate() {
         calculateButton.click();
+    }
+
+    public void enterCustomerName(String customerNameValue) {
+        customerName.sendKeys(customerNameValue);
+    }
+
+    public void enterStreet(String streetValue) {
+        street.sendKeys(streetValue);
+    }
+
+    public void enterCity(String cityValue) {
+        city.sendKeys(cityValue);
+    }
+
+    public void enterState(String stateValue) {
+        state.sendKeys(stateValue);
+    }
+
+    public void enterZip(String zipValue) {
+        zip.sendKeys(zipValue);
+    }
+
+    /**
+     * Method to select card type
+     *
+     * @param cardName Visa, MasterCard or American Express
+     */
+    public void selectCard(String cardName) {
+//        String xpath = String.format("//label[text()='%s']/preceding-sibling::input", cardName);
+        String xpath = "//label[text()='" + cardName + "']/preceding-sibling::input";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).click();
+    }
+
+    public void enterCardNumber(String cardNumberValue) {
+        cardNumber.sendKeys(cardNumberValue);
+    }
+
+    public void expirationDate(String date) {
+        expirationDate.sendKeys(date);
+    }
+
+    public void clickOnProcessButton() {
+        processButton.click();
     }
 
 }
