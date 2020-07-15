@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
+    LoginPage loginPage = new LoginPage();
 
     @Test(description = "Just login and verify title")
     public void loginTest() {
