@@ -1,7 +1,10 @@
 package com.weborders.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class OrderPage extends BasePage {
     //Product Information
@@ -23,6 +26,7 @@ public class OrderPage extends BasePage {
     @FindBy(css = "[value='Calculate']")
     private WebElement calculateButton;
 
+    //Address Information
     @FindBy(id = "ctl00_MainContent_fmwOrder_txtName")
     private WebElement customerName;
 
@@ -38,6 +42,7 @@ public class OrderPage extends BasePage {
     @FindBy(id = "ctl00_MainContent_fmwOrder_TextBox5")
     private WebElement zip;
 
+    //Payment Information
     @FindBy(id = "ctl00_MainContent_fmwOrder_TextBox1")
     private WebElement expirationDate;
 
@@ -49,4 +54,26 @@ public class OrderPage extends BasePage {
 
     @FindBy(id = "ctl00_MainContent_fmwOrder_InsertButton")
     private WebElement processButton;
+
+    public void selectProduct(String productName) {
+        Select select = new Select(productDropdown);
+        select.selectByVisibleText(productName);
+    }
+
+    public void enterQuantity(String quantityValue) {
+        quantity.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), quantityValue);
+    }
+
+    public void enterPricePerUnit(String pricePerUnitValue) {
+        pricePerUnit.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), pricePerUnitValue);
+    }
+
+    public void enterDiscount(String discountValue) {
+        discount.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), discountValue);
+    }
+
+    public void clickToCalculate(){
+        calculateButton.click();
+    }
+
 }
